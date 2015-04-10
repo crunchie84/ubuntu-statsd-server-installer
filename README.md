@@ -14,3 +14,7 @@ Supplied is an ubuntu 14.04 (etsy) Vagrant file with port forwarding
 - SSH into your fresh Ubuntu 14.04 machine
 - execute `curl -s https://raw.githubusercontent.com/crunchie84/ubuntu-statsd-server-installer/master/install-statsd-trusty-1404.sh | sudo bash` to download the script and execute it
 - profit
+
+# License
+
+GNU, see [LICENSE](LICENSE)
