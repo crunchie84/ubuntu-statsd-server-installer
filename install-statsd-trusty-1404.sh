@@ -3,7 +3,7 @@
 # based on http://digitalronin.github.io/2014/04/29/installing-graphite-on-ubuntu-1404/
 # run this script as superuser or it will fail
 
-echo "\n\nINSTALLING graphite-web + carbon-cache + apache2 \n\n"
+echo -e "\nINSTALLING graphite-web + carbon-cache + apache2 \n"
 apt-get update
 # setting debian_frontend to noninteractive prevents apt-get post install (whiptail) screens
 export DEBIAN_FRONTEND=noninteractive
@@ -16,7 +16,7 @@ apt-get install -y -qq --force-yes libapache2-mod-wsgi
 rm /etc/apache2/sites-enabled/000-default.conf
 ln -s /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-enabled/
 
-echo "\n\nCONFIGURING graphite + initializing database... \n\n"
+echo -e "\nCONFIGURING graphite + initializing database... \n"
 #append secret key and timezone to /etc/graphite/local_settings.py
 cat >> /etc/graphite/local_settings.py <<EOF
 TIME_ZONE = 'Europe/Amsterdam'
@@ -65,7 +65,7 @@ EOF
 #
 # Install STATSD collector service
 #
-echo "\n\nINSTALLING STATSD... \n\n"
+echo -e "\nINSTALLING STATSD... \n"
 apt-get install -y -qq --force-yes nodejs
 apt-get install -y -qq --force-yes git
 git clone git://github.com/etsy/statsd.git /opt/statsd
@@ -81,7 +81,7 @@ EOF
 #
 # Make the service be automatically started and monitored
 #
-echo "\n\nINSTALLING AND CONFIGURING MONIT + UPSTART... \n\n"
+echo -e "\nINSTALLING AND CONFIGURING MONIT + UPSTART... \n"
 apt-get install -y -qq --force-yes upstart monit
 
 #create startup script for statsd
@@ -126,7 +126,7 @@ service monit restart
 service carbon-cache restart
 service apache2 restart
 
-echo "\n\nDONE..."
-echo "The statsd service is listening on port 8125 UDP, graphite web is availabe on port 80"
-echo "PLEASE NOTE: this is not a production worthy install!"
-echo "Have fun..."
+echo -e "\nDONE..."
+echo -e "The statsd service is listening on port 8125 UDP, graphite web is availabe on port 80"
+echo -e "PLEASE NOTE: this is not a production worthy install!"
+echo -e "Have fun..."
