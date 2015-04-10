@@ -40,15 +40,25 @@ CARBON_CACHE_ENABLED=true
 EOF
 
 # configure metrics retention policies on disk
+rm /etc/carbon/storage-schemas.conf
 cat >> /etc/carbon/storage-schemas.conf <<EOF
+# Schema definitions for Whisper files. Entries are scanned in order,
+# and first match wins. This file is scanned for changes every 60 seconds.
+
+# Carbon's internal metrics. This entry should match what is specified in
+# CARBON_METRIC_PREFIX and CARBON_METRIC_INTERVAL settings
+[carbon]
+pattern = ^carbon\.
+retentions = 60:90d
 
 [stats]
-priority = 110
 pattern = .*
 retentions = 10s:8d,1m:31d,10m:1y,1h:5y
 
 EOF
 
+# define that we want to aggegrate counters with a sum field when
+# aggregating to lower-precision data retention
 cat >> /etc/carbon/storage-aggregation.conf <<EOF
 
 [counters]
