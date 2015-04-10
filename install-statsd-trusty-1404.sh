@@ -71,10 +71,11 @@ apt-get install -y -qq --force-yes git
 git clone git://github.com/etsy/statsd.git /opt/statsd
 cat >> /opt/statsd/localConfig.js << EOF
 {
-  graphitePort: 2003
-, graphiteHost: "127.0.0.1"
-, port: 8125
-
+  graphitePort: 2003,
+  graphiteHost: "127.0.0.1",
+  port: 8125,
+  mgmt_port: 8126,
+  percentThreshold: [90,95,99]
 }
 EOF
 
