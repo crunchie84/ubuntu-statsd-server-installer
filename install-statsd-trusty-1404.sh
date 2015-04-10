@@ -49,7 +49,7 @@ cat >> /etc/carbon/storage-schemas.conf <<EOF
 [stats]
 priority = 110
 pattern = .*
-retentions = 10:2160,60:10080,600:262974
+retentions = 10s:8d,1m:31d,10m:1y,1h:5y
 
 EOF
 
