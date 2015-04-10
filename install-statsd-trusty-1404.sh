@@ -4,6 +4,9 @@
 # run this script as superuser or it will fail
 
 echo "\n\nINSTALLING graphite-web + carbon-cache + apache2 \n\n"
+apt-get update
+# setting debian_frontend to noninteractive prevents apt-get post install (whiptail) screens
+export DEBIAN_FRONTEND=noninteractive
 apt-get install -y -qq --force-yes graphite-web
 apt-get install -y -qq --force-yes graphite-carbon
 apt-get install -y -qq --force-yes apache2
