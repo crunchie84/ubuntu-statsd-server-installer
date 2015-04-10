@@ -23,19 +23,15 @@ TIME_ZONE = 'Europe/Amsterdam'
 SECRET_KEY = '#UZ$!wNKYGBv'
 EOF
 
-# create python db?
-# as unattended => http://stackoverflow.com/questions/23202805/manage-py-flag-to-force-unattended-command
-python /usr/lib/python2.7/dist-packages/graphite/manage.py syncdb --noinput
-
-# Note that this is using the default sqlite3 database backend.
+# init django db (--noinput for unattended install => http://stackoverflow.com/questions/23202805/manage-py-flag-to-force-unattended-command)
+# NOTE: This is using the default sqlite3 database backend.
 # This is not recommended for production servers, so you will want
 # to change that (and probably a lot of other things) when you’re
 # ready to move your graphite server into production
+python /usr/lib/python2.7/dist-packages/graphite/manage.py syncdb --noinput
 
 chmod 666 /var/lib/graphite/graphite.db
 chmod 755 /usr/share/graphite-web/graphite.wsgi
-
-graphite-manage syncdb
 
 # make carbon-cache restart automatically
 cat >> /etc/default/graphite-carbon <<EOF
