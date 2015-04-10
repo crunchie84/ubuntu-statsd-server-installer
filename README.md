@@ -1,9 +1,9 @@
 # Statsd Ubuntu install scripts
 
-This repository contains scripts to automatically install a Statsd + Graphite service upon an Ubuntu server. Easy for rapid deployment upon Azure, AWS or GAE.
+This repository contains scripts to automatically install a [Statsd](https://github.com/etsy/statsd/) + [Graphite](http://graphite.wikidot.com/) service upon an Ubuntu server. Easy for rapid deployment upon Azure, AWS or GAE.
 
 # Vagrant
-Supplied is an ubuntu 14.04 (etsy) Vagrant file with port forwarding
+Supplied is an ubuntu 14.04 ([trusty](http://releases.ubuntu.com/14.04/)) Vagrant file with port forwarding
 
 - Host 8080 → Vagrant 80 (TCP)
 - Host 8125 → Vagrant 8125 (UDP)
