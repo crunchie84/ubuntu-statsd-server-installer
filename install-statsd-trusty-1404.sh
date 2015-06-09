@@ -81,7 +81,7 @@ cat >> /opt/statsd/localConfig.js << EOF
   graphiteHost: "127.0.0.1",
   port: 8125,
   mgmt_port: 8126,
-  percentThreshold: [90,95,99],
+  percentThreshold: [5,90,95,99],
   legacyNamespace: false
 }
 EOF
